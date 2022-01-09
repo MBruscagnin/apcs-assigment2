@@ -1,0 +1,70 @@
+---
+title: "Assignment Part 2 - Team21"
+author: "Matteo Bruscagnin"
+date: "12/20/2021"
+output: 
+  html_document:
+    toc: TRUE
+  pdf_document:
+    toc: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Exercise 1
+
+*1. Question 1 from Exercise list 1: Poisson Processes and Exponential Waiting Times*\
+**Superposition. Flies and wasps land on your dinner plate in the manner of independent Poisson processes with respective intensities $\lambda$ and $\mu$.**
+
+**- (a) Show that the arrivals of flying insects form a Poisson process with intensity $\lambda$ + $\mu$.**
+
+**- What is the probability that the first insect landing on the plate is a wasp?**
+
+
+# Exercise 2
+*5. Question 6 from Exercise list 2: Continuous-Time Markov Chains*\
+**Question 6 Jobs arrive at a computer according to a Poisson process with intensity $\lambda$. The central processor handles them one by one in order of arrival, and each has an exponentially distributed runtime with parameter $\mu$, the runtimes of different jobs being independent of each other and of the arrival process. Let X(t) be the number of jobs in the system (either running or wiating) at time t, where X(0) = 0.**
+
+**- Explain why X is a Markov chain, and write down its generator.**
+
+**- Show that a stationary distribution, $\pi$ exists if and only if $\lambda$ < $\mu$, and find it in this case.**
+
+# Exercise 3
+*11. Question 14 from Carlton-Devore textbook Chapter 7*\
+**Let X(t) = At+B, where A and B are independent random variables with A ~Unif[0, 6] and B ~Unif[ 10, 10].**
+ 
+**- Describe the ensemble of X(t).**
+
+**- Determine the mean function of X(t).**
+
+**- Determine the autocovariance function of X(t).**
+
+**- Determine the autocorrelation function of X(t).**
+
+**- Determine the variance function of X(t). **
+
+# Exercise 4
+*18. Question 54 from Carlton-Devore textbook Chapter 7*\
+**During the daily lunch rush, arrivals at the drive-thru at a nearby fast food restaurant follow a Poisson process with a rate of 0.8 customers per minute.**
+
+**- What is the expected number of customers in 1 h, and what is the corresponding standard deviation?**
+
+**- The drive-thru’s workers can’t handle more than 10 customers in any 5min span. Determine the probability that too many customers arrive for the workers to handle between 12:15 p.m. and 12:20 p.m.**
+
+**- A customer has just arrived. What is the probability another customer will arrive within the next 30 s?**
+
+**- The 100th lunch customer, starting at 12:00 p.m., gets a free meal. What is the expected arrival time of that lucky customer, and what is the standard deviation of that time? **
+
+# Exercise 5
+*25. Question 94 from Carlton-Devore textbook Chapter 7*\
+**Consider a machine shop that has three machines of a particular type. The time until any one of these machines fails is exponentially distributed with mean lifetime 10 h, and machines fail independently of one another. The shop has a single individual capable of repairing these machines. Once a machine fails, it will immediately begin service provided that the other two machines are still working; otherwise it will wait in a repair queue until the repair person has finished work on any other machines that need service. Time to repair is exponentially distributed with expected repair time 2 h. Obtain the stationary probabilities and determine the expected number of machines operating under stationary conditions. **
+
+# Exercise 6
+*42. Question 16 from Baron textbook Chapter 9*\
+**A sample of 250 items from lot A contains 10 defective items, and a sample of 300 items from lot B is found to contain 18 defective items.**
+
+**- Construct a 98% confidence interval for the difference of proportions of defective items.**
+
+**- At a significance level $\alpha$ = 0.02, is there a significant difference between the quality of the two lots?**
