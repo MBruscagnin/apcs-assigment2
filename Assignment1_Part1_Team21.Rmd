@@ -1,0 +1,147 @@
+---
+title: "Assignment1 Part1 - Team 21"
+author: "Matteo Bruscagnin - 834600"
+date: "11/7/2021"
+output: 
+  html_document:
+    toc: TRUE
+  pdf_document:
+    toc: TRUE
+---
+
+All solutions are made only by Matteo Bruscagnin.
+
+# Exercise 1
+
+A fair coin is continually flipped. What is the probability that the first four flips are\
+
+(a) *H, H, H, H*?\
+    Because every flip is indipendent, and every flip of the fair coin have probability $P(H) = \frac{1}{2}$ the probability of four head is $\frac{1}{2}*\frac{1}{2}*\frac{1}{2}*\frac{1}{2} = \frac{1}{16}$ then $P (HHHH) = p^{4}$\
+
+```{r}
+p = 0.5
+flips = 4
+HHHH = p^flips
+HHHH
+```
+
+(b) *T, H, H, H*?\
+    As we have seen in the previous answer, the probability of every flip is $0.5$ so the probability of one tail and three head will be the same or $P (HHH) * P (T) ==> P (HHH) * (1-p)$ then $P (THHH) = p^{3}(1-p)$\
+
+```{r}
+head_flips = flips - 1
+HHH = p^head_flips
+T = 1-p
+THHH = HHH*T
+THHH
+```
+
+(c) What is the probability that the pattern *T, H, H, H* occurs before the pattern *H, H, H, H*?\
+    If in the first four flips we have four heads then the probability is $p4$ as we seen before, so we have to find the probability that in the first 4 flips we not have the pattern HHHH: $P (THHH occurs before HHHH) = 1-p^{4}$.
+
+```{r}
+T4Hbefore4H = 1-HHHH
+T4Hbefore4H
+```
+
+# Exercise 2
+
+Suppose $X$ has a binomial distribution with parameters 6 and $\frac{1}{2}$. Show that $X = 3$ is the most likely outcome.\
+Is simple to visualize that with an histogram, e.g. with 3000 observations.
+
+```{r}
+observations = 3000
+trials = 6
+probab = 0.5
+x = rbinom(observations, trials, probab)
+# rbinom is the function for the random generation for the binomial distribution
+hist(x)
+```
+
+# Exercise 3
+
+# Exercise 4
+
+# Exercise 5
+
+An urn contains 5 red, 6 blue, and 8 green balls. If a set of 3 balls is randomly selected, what is the probability that each of the balls will be:
+
+```{r}
+red = 5
+blue = 6
+green = 8
+n = red + blue + green
+k = 3
+
+mutually_exlusive_options <- function(color1, color2, color3, k){
+  choose(color1,k) + choose(color2,k) + choose(color3,k)
+}
+```
+
+*choose(n,k) is the binomial coefficient* $\frac{n!}{k!(n-k)!}$ expressible in form of $\frac{factorial(n)}{(factorial(k) * factorial(n-k))}$
+
+```{r}
+same_color <- function(m_e_o, n, k){
+  m_e_o / choose(n,k)
+}
+```
+
+## Without replacement:
+
+### (a) of the same color?
+
+```{r}
+same_color(mutually_exlusive_options(red,blue,green,k), n, k)
+```
+
+### b) of different colors?
+
+```{r}
+(red * blue * green) / choose(n,k)
+```
+
+## With replacement:
+
+### (a) of the same color?
+
+```{r}
+(red^k+blue^k+green^k) / n^k
+```
+
+### b) of different colors?
+
+```{r}
+((red*blue*green)*factorial(k)) / n^k
+```
+
+# Exercise 6
+
+If there are 12 strangers in a room, what is the probability that no two of them celebrate their birthday in the same month?
+
+```{r}
+strangers = 12
+tot_months = 12
+```
+
+We have $S$ = {x~1~, x~2~, ..., x~12~} with $x$~i~ = {1..12} the outcome space, composed by the months of birth of every stranger.
+
+The dimension of $S$ is: $|S|$ = $12^{12}$
+
+```{r}
+outcome_space = tot_months^strangers
+options(scipen=1)
+# the instruction option(scipen = n) format the numbers from scientific notation
+# (scipen = 0) to fixed notation
+options(scipen = 999) 
+outcome_space
+```
+
+We call $A$ the set of all the possible probability of no two strangers have the same month of birth: $|A| = 12!$
+
+The first stranger have birth on every month so the probability that no two strangers have the same month of birth is $P = \frac{12}{12}$;the second one can have any birth month but that of the first stranger: $\frac{11}{12}$, and so on: $\frac{12}{12} * \frac{11}{12} * ... * \frac{1}{12} = 12!/12^{12}$
+
+```{r}
+no_birth_same_month = factorial(tot_months) / outcome_space
+options(scipen = 1)
+no_birth_same_month
+```
